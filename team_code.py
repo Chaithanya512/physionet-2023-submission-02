@@ -97,14 +97,14 @@ def train_challenge_model(data_folder, model_folder, verbose):
 
     # Train the HistGradientBoostingClassifier with GridSearchCV for hyperparameter tuning.
     grid_search_clf = GridSearchCV(HistGradientBoostingClassifier(random_state=random_state),
-                               param_grid=param_grid_clf, cv=3)
+                               param_grid=param_grid_clf, cv=5)
     grid_search_clf.fit(features, outcomes.ravel())
     best_hist_gb_clf = grid_search_clf.best_estimator_
 
     
     # Train the HistGradientBoostingRegressor with GridSearchCV for hyperparameter tuning.
     grid_search_reg = GridSearchCV(HistGradientBoostingRegressor(random_state=random_state),
-                               param_grid=param_grid_reg, cv=3)
+                               param_grid=param_grid_reg, cv=5)
     grid_search_reg.fit(features, cpcs.ravel())
     best_hist_gb_reg = grid_search_reg.best_estimator_
     
